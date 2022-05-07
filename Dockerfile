@@ -3,6 +3,6 @@ COPY . /src
 WORKDIR /src
 RUN mvn install -DskipTests
 
-FROM tomcat:9.0
-COPY --from=BUILD target/spring-framework*.war /usr/local/tomcat/webapps/spring-framework-petclinic.war
+FROM tomcat:9.0-jre8-alpine
+COPY --from=BUILD /src/target/spring-framework*.war /usr/local/tomcat/webapps/spring-framework-petclinic.war
 
